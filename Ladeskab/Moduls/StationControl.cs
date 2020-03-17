@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ladeskab.Moduls;
+using NSubstitute;
 using UsbSimulator;
 
 namespace Ladeskab
@@ -19,6 +21,7 @@ namespace Ladeskab
         };
 
         // Her mangler flere member variable
+        private IDoor _door = Substitute.For<IDoor>();
         private LadeskabState _state;
         private IUsbCharger _charger;
         private int _oldId;
@@ -26,7 +29,7 @@ namespace Ladeskab
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
-
+        
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(int id)
         {

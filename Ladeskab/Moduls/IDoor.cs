@@ -6,10 +6,10 @@
         char getState();
         
         //locks the door
-        void Lock();
+        void LockDoor();
         
         //unlock the door
-        void unLock();
+        void UnlockDoor();
 
     }
 }
