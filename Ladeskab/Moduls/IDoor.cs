@@ -3,7 +3,7 @@
     public interface IDoor
     {
         //Tells if door is locked or unlocked
-        char state { get; }
+        char getState();
         
         //locks the door
         void Lock();
