@@ -51,7 +51,9 @@
   <ItemGroup>
     <Compile Include="Moduls\Door.cs" />
     <Compile Include="Moduls\IDoor.cs" />
+    <Compile Include="Moduls\IRFidReader.cs" />
     <Compile Include="Moduls\IUsbCharger.cs" />
+    <Compile Include="Moduls\RFidReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Moduls\StationControl.cs" />
