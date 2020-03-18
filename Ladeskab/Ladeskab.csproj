@@ -62,8 +62,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Moduls\ChargeControl.cs" />
     <Compile Include="Moduls\Display.cs" />
     <Compile Include="Moduls\Door.cs" />
+    <Compile Include="Moduls\IChargeControl.cs" />
     <Compile Include="Moduls\IDisplay.cs" />
     <Compile Include="Moduls\IDoor.cs" />
     <Compile Include="Moduls\IRFidReader.cs" />
@@ -71,7 +73,6 @@
     <Compile Include="Moduls\IUsbCharger.cs" />
     <Compile Include="Moduls\RFidReader.cs" />
     <Compile Include="Moduls\LogFile.cs" />
-    <Compile Include="Moduls\USBCharger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Moduls\StationControl.cs" />

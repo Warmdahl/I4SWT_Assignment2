@@ -8,13 +8,14 @@ using NUnit.Framework.Internal.Execution;
 
 namespace Ladeskab.Moduls
 {
+    public class RFIDReadEventArgs : EventArgs
+    {
+        public int ID { get; set; }
+    }
     public interface IRFidReader
     {
         event EventHandler<RFIDReadEventArgs> RFIDReadEvent;
     }
 
-    public class RFIDReadEventArgs : EventArgs
-    {
-        public int ID { get; set; }
-    }
+
 }
