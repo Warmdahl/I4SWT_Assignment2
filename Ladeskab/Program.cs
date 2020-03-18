@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ladeskab.Moduls;
 using NSubstitute;
+using UsbSimulator;
 
 namespace Ladeskab
 {
@@ -14,7 +15,11 @@ namespace Ladeskab
         {
             // Assemble your system here from all the classes
             Display _display = new Display();
+            LogFile _logFile = new LogFile();
+            UsbChargerSimulator _usbChargerSimulator = new UsbChargerSimulator();
 
+            // Simulering
+            _usbChargerSimulator.SimulateConnected(true);
 
 
             bool finish = false;
@@ -54,6 +59,4 @@ namespace Ladeskab
             } while (!finish);
         }
     }
-}
-
 }

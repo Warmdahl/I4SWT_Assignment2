@@ -10,7 +10,7 @@ namespace Ladeskab.Moduls
 {
     public interface IRFidReader
     {
-        event EventHandler<RFReadEventArgs> RFIDReadEvent;
+        event EventHandler<RFIDReadEventArgs> RFIDReadEvent;
     }
 
     public class RFIDReadEventArgs : EventArgs

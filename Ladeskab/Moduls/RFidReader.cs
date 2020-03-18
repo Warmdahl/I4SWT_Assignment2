@@ -10,7 +10,7 @@ namespace Ladeskab.Moduls
     {
         private int id;
 
-        public event EventHandler<RFifChangedEventArgs> RFidChangedEvent;
+        public event EventHandler<RFIDReadEventArgs> RFidChangedEvent;
 
         public void SetID(int newID)
         {
