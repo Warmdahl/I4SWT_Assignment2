@@ -18,11 +18,11 @@ namespace Ladeskab.Moduls
             switch (islocked)
             {
                 case true:
-
+                    //laver streng når døren er låst
                     s = s + "locked by" + id + ", door is locked:";
                     break;
                 case false:
-
+                    //laver streng når døren er låst op
                     s = s + "unlocked by" + id + ", door is unlocked:";
                     break;
             }
