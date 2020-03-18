@@ -15,7 +15,7 @@ namespace Ladeskab.Moduls
 
         public void DisplayChargingMessage(string s)
         {
-            string tempString = "Charting Message: {0}";
+            string tempString = "Charging Message: {0}";
             string formattedString = string.Format(tempString, s);
             System.Console.WriteLine(formattedString);
         }
