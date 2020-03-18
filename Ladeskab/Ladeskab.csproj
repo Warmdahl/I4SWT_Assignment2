@@ -62,7 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Moduls\Display.cs" />
     <Compile Include="Moduls\Door.cs" />
+    <Compile Include="Moduls\IDisplay.cs" />
     <Compile Include="Moduls\IDoor.cs" />
     <Compile Include="Moduls\IRFidReader.cs" />
     <Compile Include="Moduls\ILog.cs" />
