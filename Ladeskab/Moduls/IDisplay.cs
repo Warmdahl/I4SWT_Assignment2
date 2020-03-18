@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ladeskab
+namespace Ladeskab.Moduls
 {
     public interface IDisplay
     {
-
+        void DisplayUserInstructions(string s);
+        void DisplayChargingMessage(string s);
     }
 }

@@ -13,6 +13,9 @@ namespace Ladeskab
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
+            Display _display = new Display();
+
+
 
             bool finish = false;
             do
