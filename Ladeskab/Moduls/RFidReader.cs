@@ -10,22 +10,16 @@ namespace Ladeskab.Moduls
     {
         private int id;
 
-        public event EventHandler<RFifChangedEventArgs> RFidChangedEvent;
+        public event EventHandler<RFIDReadEventArgs> RFIDReadEvent;
 
-        public void SetID(int newID)
+        public void SimulateReadRFID(int newID)
         {
-            OnRFidChanged(new RFidChangedEventArgs {ID = newID});
+            OnRFidChanged(new RFIDReadEventArgs() { ID = newID});
         }
 
-        public virtual void OnRFidChanged(RFidChangedEventArgs e)
+        public virtual void OnRFidChanged(RFIDReadEventArgs e)
         {
-            RFidChangedEvent?.Invoke(this, e);
+            RFIDReadEvent?.Invoke(this, e);
         }
-
-        public class RFidChangedEventArgs : EventArgs
-        {
-            public int ID { get; set; }
-        }
-
     }
 }
