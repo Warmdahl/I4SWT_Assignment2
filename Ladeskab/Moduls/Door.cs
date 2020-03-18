@@ -24,6 +24,8 @@ namespace Ladeskab.Moduls
             _state = 'u';
         }
 
+        public event EventHandler<ClosedEventArgs> ClosedValueEvent;
+
         public char getState()
         {
             return _state;

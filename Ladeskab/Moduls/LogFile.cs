@@ -8,12 +8,12 @@ namespace Ladeskab.Moduls
         public void Log(bool islocked, int id)
         {
             //lav fil
-            string filename = "navn.txt";
-            StreamWriter sw = File.AppendText(filename);
+            var filename = "navn.txt";
+            var sw = File.AppendText(filename);
             
-            //lav et streng
-            DateTime now = DateTime.Now;
-            string s = now+", ";
+            //lav et string
+            var now = DateTime.Now;
+            var s = now + ", ";
             
             switch (islocked)
             {
@@ -26,6 +26,7 @@ namespace Ladeskab.Moduls
                     s = s + "unlocked by" + id + ", door is unlocked:";
                     break;
             }
+            
             //skriv til fil
             sw.WriteLine(s);
         }

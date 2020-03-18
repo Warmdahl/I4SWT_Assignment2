@@ -1,9 +1,11 @@
-﻿using UsbSimulator;
+﻿using System;
+using UsbSimulator;
 
 namespace Ladeskab.Moduls
 {
     public class USBCharger : IUsbCharger
     {
+        public event EventHandler<CurrentEventArgs> CurrentValueEvent;
         public double CurrentValue { get; }
 
         public bool Connected { get; }
