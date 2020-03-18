@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ladeskab.Moduls;
+using NUnit.Framework.Internal.Execution;
 
-namespace Ladeskab
+
+namespace Ladeskab.Moduls
 {
     public interface IRFidReader
     {
-        private event EventHandler<RFidReader.RFidChangedEventArgs> RFidChangedEvent;
+        event EventHandler<RFReadEventArgs> RFIDReadEvent;
+    }
 
-        void SetID(int newID);
+    public class RFIDReadEventArgs : EventArgs
+    {
+        public int ID { get; set; }
     }
 }
