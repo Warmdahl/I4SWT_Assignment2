@@ -3,17 +3,17 @@
 namespace Ladeskab.Moduls
 {
 
-    public class ClosedEventArgs : EventArgs
+    public class ChangedEventArgs : EventArgs
     {
-        private bool Closed { get; set; }
+        public bool DoorState { get; set; }
     }
     public interface IDoor
     {
 
-        event EventHandler<ClosedEventArgs> ClosedValueEvent;
+        event EventHandler<ChangedEventArgs> ChangedValueEvent;
         
         //Tells if door is locked or unlocked
-        char getState();
+        //char getState();
         
         //locks the door
         void LockDoor();

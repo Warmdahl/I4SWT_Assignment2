@@ -1,41 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Ladeskab.Moduls
 {
     public class Door : IDoor
     {
 
-        private char _state;
-        
+        public bool Islocked { get; set; }
+
+        public event EventHandler<ChangedEventArgs> ChangedValueEvent;
+
         public Door()
         {
-            _state = 'u';
+            Islocked = false;
         }
 
         public void LockDoor()
         {
-            System.Console.WriteLine("Door is locked");
-            _state = 'l';
+            Islocked = true;
+            Console.WriteLine("The Door is locked");
         }
 
         public void UnlockDoor()
         {
+            Islocked = false;
             System.Console.WriteLine("Door is unlocked");
-            _state = 'u';
         }
 
-        public event EventHandler<ClosedEventArgs> ClosedValueEvent;
-
-        public char getState()
+        public void SimulateDoorOpen()
         {
-            return _state;
+            OnDoorChanged(new ChangedEventArgs() {DoorState = true});
         }
 
-        public event EventHandler DoorClosed;
-
-        protected virtual void OnDoorClosed(EventArgs e)
+        public void SimulateDoorClose()
         {
-            //Something
+            OnDoorChanged(new ChangedEventArgs() {DoorState = false});
+        }
+
+        protected virtual void OnDoorChanged(ChangedEventArgs e)
+        {
+            ChangedValueEvent?.Invoke(this, e); //sending an instance of the data to all connected observers
         }
     }
 }
