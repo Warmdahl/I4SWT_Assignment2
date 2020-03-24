@@ -45,7 +45,6 @@ namespace Ladeskab_Test.Unit
             }
         }
         */
-        
         [TestCase("This is an instruction")]
         public void TestInstruction(string testString)
         {
