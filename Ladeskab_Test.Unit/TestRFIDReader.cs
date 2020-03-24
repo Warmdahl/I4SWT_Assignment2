@@ -19,7 +19,7 @@ namespace RFIDReader.Unit
             _rFidReader.RFIDReadEvent += (o, args) => { _rfidReadEventArgs = args; };
         }
 
-        // Test 1
+        // Test 1 at den ikke er null
         [Test]
         public void RFID_Reader_EventFired()
         {
@@ -27,7 +27,7 @@ namespace RFIDReader.Unit
             Assert.That(_rfidReadEventArgs.ID, Is.Not.Null);
         }
 
-        // Test 2
+        // Test 2 at den er valid
         [Test]
         public void RFID_Reader_Succes()
         {
@@ -35,7 +35,7 @@ namespace RFIDReader.Unit
             Assert.That(_rfidReadEventArgs.ID, Is.EqualTo(Valid_ID));
         }
 
-        // Test 3
+        // Test 3 at den er invalid
         [Test]
         public void RFID_Reader_Failed()
         {
