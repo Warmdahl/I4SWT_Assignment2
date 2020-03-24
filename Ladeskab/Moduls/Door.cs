@@ -22,13 +22,13 @@ namespace Ladeskab.Moduls
         public void LockDoor()
         {
             Islocked = true;
-            Console.WriteLine("Døren er låst");
+            Console.WriteLine("Door is Locked");
         }
 
         public void UnlockDoor()
         {
             Islocked = false;
-            System.Console.WriteLine("Døren er låst op");
+            System.Console.WriteLine("Door is Unlocked");
         }
 
         public void SimulateDoorOpen()
