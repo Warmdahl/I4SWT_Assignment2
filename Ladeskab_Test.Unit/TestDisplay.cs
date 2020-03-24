@@ -8,17 +8,17 @@ namespace Ladeskab_Test.Unit
 {
     class TestDisplay
     {
-        //private Ladeskab.Moduls.Display _D;
-        private IDisplay _D;
+        private Ladeskab.Moduls.Display _D;
+        //private IDisplay _D;
 
         [SetUp]
         public void SetUp()
         {
-            //_D = new Display();
-            _D = Substitute.For<IDisplay>();
+            _D = new Display();
+            //_D = Substitute.For<IDisplay>();
         }
 
-        /*
+        
         // Test af User Instruction
         [TestCase("This is an instruction")]
         public void TestUserInstruction(string testString)
@@ -44,20 +44,20 @@ namespace Ladeskab_Test.Unit
                 Assert.AreEqual(expected, sw.ToString());
             }
         }
-        */
         
-        [TestCase("This is an instruction")]
-        public void TestInstruction(string testString)
-        {
-            _D.DisplayUserInstructions(testString);
-            _D.Received().DisplayUserInstructions(testString);
-        }
+        
+        //[TestCase("This is an instruction")]
+        //public void TestInstruction(string testString)
+        //{
+        //    _D.DisplayUserInstructions(testString);
+        //    _D.Received().DisplayUserInstructions(testString);
+        //}
 
-        [TestCase("This is a message")]
-        public void TestMessage(string testString)
-        {
-            _D.DisplayChargingMessage(testString);
-            _D.Received().DisplayChargingMessage(testString);
-        }
+        //[TestCase("This is a message")]
+        //public void TestMessage(string testString)
+        //{
+        //    _D.DisplayChargingMessage(testString);
+        //    _D.Received().DisplayChargingMessage(testString);
+        //}
     }
 }
