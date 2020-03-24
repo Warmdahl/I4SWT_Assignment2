@@ -28,8 +28,7 @@ namespace Ladeskab
         private IDoor _door;
         private LadeskabState _state;
         private int _oldId;
-
-        private string logFile = "logfile.txt"; // Navnet på systemets log-fil
+        
 
         // Her mangler constructor
         public StationControl(IDoor door, IChargeControl chagercontrol, IRFidReader rfidReader, IDisplay display, ILog log, IUsbCharger usbcharger)

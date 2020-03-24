@@ -1,22 +1,25 @@
 ﻿using System;
 using System.IO;
 using Ladeskab.Moduls;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Ladeskab_Test.Unit
 {
     class TestDisplay
     {
-        private Ladeskab.Moduls.Display _display;
+        //private Ladeskab.Moduls.Display _D;
+        private IDisplay _D;
 
         [SetUp]
         public void SetUp()
         {
-            _display = new Display();
+            //_D = new Display();
+            _D = Substitute.For<IDisplay>();
         }
 
         // Test af User Instruction
-        [TestCase("This is a instruction")]
+        [TestCase("This is an instruction")]
         public void TestUserInstruction(string testString)
         {
             using (StringWriter sw = new StringWriter())
@@ -39,6 +42,13 @@ namespace Ladeskab_Test.Unit
                 string expected = string.Format($"Charging Message: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
+        }
+
+        [TestCase("This is an instruction")]
+        public void TestInstruction(string testString)
+        {
+            _D.DisplayUserInstructions(testString);
+            _D.Received().DisplayUserInstructions(testString);
         }
     }
 }
