@@ -25,7 +25,7 @@ namespace Ladeskab_Test.Unit
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                _display.DisplayUserInstructions(testString);
+                _D.DisplayUserInstructions(testString);
                 string expected = string.Format($"User Instruction: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
@@ -38,7 +38,7 @@ namespace Ladeskab_Test.Unit
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                _display.DisplayChargingMessage(testString);
+                _D.DisplayChargingMessage(testString);
                 string expected = string.Format($"Charging Message: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
