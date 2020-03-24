@@ -30,7 +30,7 @@ namespace Ladeskab_Test.Unit
         public void HandleCurrentChangedBetweenZeroAndFive(double current)
         {
             _charger.CurrentValueEvent += Raise.EventWith<CurrentEventArgs>(new CurrentEventArgs() {Current = current});
-            _display.Received().DisplayChargingMessage(Arg.Is<string>("Finished Charging"));
+            _display.Received().DisplayChargingMessage(Arg.Is<string>("Finished Charging!"));
         }
 
         [TestCase(5.01)]
@@ -49,7 +49,7 @@ namespace Ladeskab_Test.Unit
         public void HandleCurrentChangedBetweenOverFiveHundred(double current)
         {
             _charger.CurrentValueEvent += Raise.EventWith<CurrentEventArgs>(new CurrentEventArgs() {Current = current});
-            _display.Received().DisplayChargingMessage(Arg.Is<string>("Error - Charginge stoppet"));
+            _display.Received().DisplayChargingMessage(Arg.Is<string>("An Error has occurred, charging has been stopped"));
             _charger.Received().StopCharge();
         }
     }
