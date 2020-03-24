@@ -7,12 +7,12 @@ namespace Ladeskab_Test.Unit
 {
     class TestDisplay
     {
-        private Ladeskab.Moduls.Display _D;
+        private Ladeskab.Moduls.Display _display;
 
         [SetUp]
         public void SetUp()
         {
-            _D = new Display();
+            _display = new Display();
         }
 
         // Test af User Instruction
@@ -22,8 +22,8 @@ namespace Ladeskab_Test.Unit
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                _D.DisplayUserInstructions(testString);
-                string expected = string.Format("User Instruction: {0}{1}", testString, Environment.NewLine);
+                _display.DisplayUserInstructions(testString);
+                string expected = string.Format($"User Instruction: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
         }
@@ -35,8 +35,8 @@ namespace Ladeskab_Test.Unit
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                _D.DisplayChargingMessage(testString);
-                string expected = string.Format("Charging Message: {0}{1}", testString, Environment.NewLine);
+                _display.DisplayChargingMessage(testString);
+                string expected = string.Format($"Charging Message: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
         }
