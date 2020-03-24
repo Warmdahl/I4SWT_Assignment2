@@ -18,6 +18,7 @@ namespace Ladeskab_Test.Unit
             _D = Substitute.For<IDisplay>();
         }
 
+        /*
         // Test af User Instruction
         [TestCase("This is an instruction")]
         public void TestUserInstruction(string testString)
@@ -26,7 +27,7 @@ namespace Ladeskab_Test.Unit
             {
                 Console.SetOut(sw);
                 _D.DisplayUserInstructions(testString);
-                string expected = string.Format("User Instruction: {0}{1}", testString, Environment.NewLine);
+                string expected = string.Format($"User Instruction: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
         }
@@ -39,16 +40,24 @@ namespace Ladeskab_Test.Unit
             {
                 Console.SetOut(sw);
                 _D.DisplayChargingMessage(testString);
-                string expected = string.Format("Charging Message: {0}{1}", testString, Environment.NewLine);
+                string expected = string.Format($"Charging Message: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
         }
-
+        */
+        
         [TestCase("This is an instruction")]
         public void TestInstruction(string testString)
         {
             _D.DisplayUserInstructions(testString);
             _D.Received().DisplayUserInstructions(testString);
+        }
+
+        [TestCase("This is a message")]
+        public void TestMessage(string testString)
+        {
+            _D.DisplayChargingMessage(testString);
+            _D.Received().DisplayChargingMessage(testString);
         }
     }
 }

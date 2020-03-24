@@ -49,7 +49,7 @@ namespace Ladeskab
         {
             switch (_state)
             {
-                case LadeskabState.DoorOpen:
+                case LadeskabState.DoorOpen:    //state=DoorOpen
                     if (!e.DoorState)
                     {
                         _state = LadeskabState.Available;
@@ -60,7 +60,7 @@ namespace Ladeskab
                         _display.DisplayUserInstructions("Dør åben, tilslut telefon");
                     }
                     break;
-                case LadeskabState.Available:
+                case LadeskabState.Available:    //state=Available
                     if (e.DoorState)
                     {
                         _state = LadeskabState.DoorOpen;
@@ -71,7 +71,7 @@ namespace Ladeskab
                         _display.DisplayUserInstructions("Indlæs RFID");
                     }
                     break;
-                case LadeskabState.Locked:
+                case LadeskabState.Locked:    //state=locked
                     _display.DisplayChargingMessage("Charging...");
                     break;
                 

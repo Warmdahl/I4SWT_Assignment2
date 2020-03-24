@@ -12,7 +12,7 @@ namespace Ladeskab
     class Program
     {
         static void Main(string[] args)
-        {
+        {   
             // Assemble your system here from all the classes
             Display _display = new Display();
             LogFile _logFile = new LogFile();

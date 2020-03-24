@@ -11,7 +11,7 @@ namespace Ladeskab.Moduls
     {
 
         event EventHandler<ChangedEventArgs> ChangedValueEvent;
-        
+
         //Tells if door is locked or unlocked
         //char getState();
         
