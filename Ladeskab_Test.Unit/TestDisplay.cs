@@ -27,7 +27,7 @@ namespace Ladeskab_Test.Unit
             {
                 Console.SetOut(sw);
                 _D.DisplayUserInstructions(testString);
-                string expected = string.Format("User Instruction: {0}{1}", testString, Environment.NewLine);
+                string expected = string.Format($"User Instruction: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
         }
@@ -40,7 +40,7 @@ namespace Ladeskab_Test.Unit
             {
                 Console.SetOut(sw);
                 _D.DisplayChargingMessage(testString);
-                string expected = string.Format("Charging Message: {0}{1}", testString, Environment.NewLine);
+                string expected = string.Format($"Charging Message: {testString}{Environment.NewLine}");
                 Assert.AreEqual(expected, sw.ToString());
             }
         }
