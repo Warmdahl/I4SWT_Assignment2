@@ -58,7 +58,7 @@ namespace Ladeskab.Moduls
                 }
 
             }
-            else //current above 500
+            else //current above 500 mA
             {
                 _charger.StopCharge();
                 IsCharging = false;
