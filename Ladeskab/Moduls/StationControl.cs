@@ -21,7 +21,6 @@ namespace Ladeskab
         };
         
         private IChargeControl _chargercontrol;
-        private IUsbCharger _usbCharger;
         private IRFidReader _rfidreader;
         private IDisplay _display;
         private ILog _log;
@@ -40,7 +39,6 @@ namespace Ladeskab
             _display = display;
             _log = log;
             _state = LadeskabState.Available;
-            _usbCharger = usbcharger;
             _door.ChangedValueEvent += handleDoorState;
             _rfidreader.RFIDReadEvent += RfidDetected;
         }
@@ -75,8 +73,6 @@ namespace Ladeskab
 
             }
         }
-        
-        
         
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(object o, RFIDReadEventArgs e)
