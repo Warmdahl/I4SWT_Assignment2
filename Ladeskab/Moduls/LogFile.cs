@@ -7,9 +7,9 @@ namespace Ladeskab.Moduls
     {
         public void Log(bool islocked, int id)
         {
-            //lav fil
-            var filename = "navn.txt";
-            var sw = File.AppendText(filename);
+            ////lav fil
+            //var filename = "navn.txt";
+            //var sw = File.AppendText(filename);
             
             //lav et string
             var now = DateTime.Now;
@@ -28,7 +28,19 @@ namespace Ladeskab.Moduls
             }
             
             //skriv til fil
-            sw.WriteLine(s);
+            //sw.WriteLine(s);
+
+            using (StreamWriter sw = new StreamWriter("test.txt"))
+            {
+                if (islocked == true)
+                {
+                    Console.WriteLine(s);
+                }
+                else
+                {
+                    Console.WriteLine(s);
+                }
+            }
         }
     }
 }
