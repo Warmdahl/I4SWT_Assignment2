@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Ladeskab.Moduls;
 using NSubstitute;
 using NUnit.Framework;
@@ -17,40 +18,42 @@ namespace Ladeskab_Test.Unit
             _log = new LogFile();
         }
 
-        /*[TestCase(true, 12)]
+        [TestCase(true, 12)]
         public void logfileTrue(bool locked, int id)
         {
+            var now = DateTime.Now;
+            var s = now + ", ";
+            string st = "";
             using (StringWriter sw = new StringWriter())
             {
 
                 _log.Log(locked, id);
-                string s;
-                string st = "locked by: " + id + ", door is locked";
-                using (StreamReader SR = File.OpenText("navn.txt"))
-                {
-                    s = SR.ReadLine();
-                }
+                s = s + "locked by: " + id + ", door is locked";
+                
+                st = File.ReadLines("navn.txt").Last();
+                
 
-                Assert.AreEqual(st, s);
+                Assert.AreEqual(s, st);
             }
         } 
         [TestCase(false, 10)]
             public void logfileFalse(bool locked, int id)
             {
+                var now = DateTime.Now;
+                var s = now + ", ";
+                string st;
                 using (StringWriter sw = new StringWriter())
                 {
 
                     _log.Log(locked, id);
-                    string s;
-                    string st = "unlocked by: " + id + ", door is unlocked";
-                    using (StreamReader SR = File.OpenText("navn.txt"))
-                    {
-                        s = SR.ReadLine();
-                    }
+                    s = s + "unlocked by: " + id + ", door is unlocked";
+                    
+                    st = File.ReadLines("navn.txt").Last();
+                    
 
-                    Assert.AreEqual(st, s);
+                    Assert.AreEqual(s, st);
                 }
-            }*/
+            }
             
         
         
