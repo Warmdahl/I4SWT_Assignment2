@@ -7,10 +7,9 @@ namespace Ladeskab.Moduls
     {
         public void Log(bool islocked, int id)
         {
-            ////lav fil
-            //var filename = "navn.txt";
-            //var sw = File.AppendText(filename);
-            
+            //lav fil
+            var filename = "navn.txt";
+
             //lav et string
             var now = DateTime.Now;
             var s = now + ", ";
@@ -19,27 +18,18 @@ namespace Ladeskab.Moduls
             {
                 case true:
                     //laver streng når døren er låst
-                    s = s + "locked by" + id + ", door is locked:";
+                    s = s + "locked by: " + id + ", door is locked";
                     break;
                 case false:
                     //laver streng når døren er låst op
-                    s = s + "unlocked by" + id + ", door is unlocked:";
+                    s = s + "unlocked by: " + id + ", door is unlocked";
                     break;
             }
             
             //skriv til fil
-            //sw.WriteLine(s);
-
-            using (StreamWriter sw = new StreamWriter("test.txt"))
+            using (StreamWriter stw = File.AppendText(filename))
             {
-                if (islocked == true)
-                {
-                    Console.WriteLine(s);
-                }
-                else
-                {
-                    Console.WriteLine(s);
-                }
+                stw.WriteLine(s);
             }
         }
     }
