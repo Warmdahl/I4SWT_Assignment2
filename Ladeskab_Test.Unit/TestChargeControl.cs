@@ -60,5 +60,27 @@ namespace Ladeskab_Test.Unit
             _display.Received().DisplayChargingMessage(Arg.Is<string>("An Error has occurred, charging has been stopped"));
             _charger.Received().StopCharge();
         }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void isconnected(bool con)
+        {
+            _charger.Connected.Returns(con);
+            Assert.That(_uut.IsConnected, Is.EqualTo(con));
+        }
+
+        [Test]
+        public void ChargeStart()
+        {
+            _uut.StartCharge();
+            _charger.Received().StartCharge();
+        }
+
+        [Test]
+        public void ChargeStop()
+        {
+            _uut.StopCharge();
+            _charger.Received().StopCharge();
+        }
     }
 }
