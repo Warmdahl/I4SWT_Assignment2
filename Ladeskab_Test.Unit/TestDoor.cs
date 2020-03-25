@@ -22,12 +22,14 @@ namespace Ladeskab_Test.Unit
             _door.ChangedValueEvent += (o, args) => { _changedEventArgs = args; };
         }
 
+        //Tester om døren er låst op som standard.
         [Test]
         public void Door_isUnlockedfromstandby()
         {
             Assert.That(_door.Islocked, Is.False);
         }
 
+        //Tester om døren låser.
         [Test]
         public void Door_isLocked()
         {
@@ -35,6 +37,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_door.Islocked, Is.True);
         }
 
+        //Tester om døren låser op når den har været låst.
         [Test]
         public void Door_isUnlocked()
         {
@@ -43,6 +46,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_door.Islocked, Is.False);
         }
 
+        //Tester om doorstate passer med dørens tilstand.
         [Test]
         public void Door_StateisOpen()
         {
@@ -50,6 +54,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_changedEventArgs.DoorState, Is.True); //Doorstate is true when open
         }
 
+        //Tester om doorstate passer med dørens tilstand
         [Test]
         public void Door_StateisClosed()
         {
