@@ -30,7 +30,7 @@ namespace Ladeskab_Test.Unit
             _rFidReader = Substitute.For<IRFidReader>();
             _chargeControl = Substitute.For<IChargeControl>();
             _usbCharger = Substitute.For<IUsbCharger>();
-            _stationControl = new StationControl(_door,_chargeControl,_rFidReader,_display,_logfile,_usbCharger);
+            _stationControl = new StationControl(_door, _chargeControl, _rFidReader, _display, _logfile, _usbCharger);
         }
 
         [Test]
@@ -65,9 +65,38 @@ namespace Ladeskab_Test.Unit
         [TestCase(true, "Dør åben, tilslut telefon", StationControl.LadeskabState.DoorOpen)]
         public void StationControlHandleDoorstateAvailable(bool open, string output, StationControl.LadeskabState state)
         {
-            _door.ChangedValueEvent += Raise.EventWith<ChangedEventArgs>(new ChangedEventArgs() { DoorState = open });
+            _door.ChangedValueEvent += Raise.EventWith<ChangedEventArgs>(new ChangedEventArgs() {DoorState = open});
             _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
+
+        /* disse test virker ikke i nu, men det er tæt på. Skal arbejdes videre med*/
+        
+        //[TestCase(50, "Ladeskab optaget", true, StationControl.LadeskabState.Locked)]
+        //public void StationControlRFIdAvailableConnected(int id, string output, bool islocked, StationControl.LadeskabState state)
+        //{
+        //    _chargeControl.IsConnected().Returns(true);
+        //    _rFidReader.RFIDReadEvent += Raise.EventWith<RFIDReadEventArgs>(new RFIDReadEventArgs() {ID = id});
+        //    _door.Received().LockDoor();
+        //    _logfile.Received().Log(islocked, id);
+        //    _chargeControl.Received().StartCharge();
+        //    _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
+        //    //Assert.That(_stationControl._state, Is.EqualTo(state));
+
+        //}
+
+        //[TestCase(50, "Tag din telefon ud af skabet og luk døren", true, StationControl.LadeskabState.Locked)]
+        //public void StationControlRFIdLocked(int id, string output, bool islocked, StationControl.LadeskabState state)
+        //{
+        //    _chargeControl.IsConnected().Returns(true);
+        //    _rFidReader.RFIDReadEvent += Raise.EventWith<RFIDReadEventArgs>(new RFIDReadEventArgs() {ID = id});
+
+
+        //    _rFidReader.RFIDReadEvent += Raise.EventWith<RFIDReadEventArgs>(new RFIDReadEventArgs() {ID = id});
+        //    _chargeControl.Received().StopCharge();
+        //    _door.Received().UnlockDoor();
+        //    _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
+        //}
     }
+
 }
