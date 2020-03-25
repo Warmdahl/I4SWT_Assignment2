@@ -72,10 +72,7 @@ namespace Ladeskab
                         _display.DisplayUserInstructions("Indlæs RFID");
                     }
                     break;
-                //case LadeskabState.Locked:    //state=locked
-                //    _display.DisplayChargingMessage("Charging...");
-                //    break;
-                
+
             }
         }
         
@@ -105,10 +102,6 @@ namespace Ladeskab
 
                     break;
 
-                case LadeskabState.DoorOpen:
-                    // Ignore
-                    break;
-
                 case LadeskabState.Locked:
                     // Check for correct ID
                     if (e.ID == _oldId)
@@ -124,11 +117,8 @@ namespace Ladeskab
                     {
                         _display.DisplayUserInstructions("Forkert RFID tag");
                     }
-
                     break;
             }
         }
-
-        // Her mangler de andre trigger handlere
     }
 }
