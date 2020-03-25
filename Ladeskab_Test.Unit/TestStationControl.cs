@@ -70,8 +70,6 @@ namespace Ladeskab_Test.Unit
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
 
-        /* disse test virker ikke i nu, men det er tæt på. Skal arbejdes videre med*/
-
         [TestCase(50, "Ladeskab optaget", true, StationControl.LadeskabState.Locked)]
         public void StationControlRFIdAvailableConnected(int id, string output, bool islocked, StationControl.LadeskabState state)
         {
@@ -83,6 +81,15 @@ namespace Ladeskab_Test.Unit
             _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
+
+        [TestCase(50,"Din telefon er ikke ordentlig tilsluttet. Prøv igen.")]
+        public void StationControlRFIdAvailableConnectedFail(int id, string output)
+        {
+            _chargeControl.IsConnected().Returns(false);
+            _rFidReader.RFIDReadEvent += Raise.EventWith<RFIDReadEventArgs>(new RFIDReadEventArgs() { ID = id });
+            _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
+        }
+
 
         [TestCase(50, "Tag din telefon ud af skabet og luk døren", false, StationControl.LadeskabState.Available)]
         public void StationControlRFIdLocked(int id, string output, bool islocked, StationControl.LadeskabState state)
@@ -97,6 +104,17 @@ namespace Ladeskab_Test.Unit
             _logfile.Received().Log(islocked, id);
             _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
             Assert.That(_stationControl._state, Is.EqualTo(state));
+        }
+
+        [TestCase(50,100, "Forkert RFID tag")]
+        public void StationControlRfIdLockedFail(int id,int wrongid,string output)
+        {
+            _chargeControl.IsConnected().Returns(true);
+            _rFidReader.RFIDReadEvent += Raise.EventWith<RFIDReadEventArgs>(new RFIDReadEventArgs() { ID = id });
+
+
+            _rFidReader.RFIDReadEvent += Raise.EventWith<RFIDReadEventArgs>(new RFIDReadEventArgs() { ID = wrongid });
+            _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
         }
     }
 
