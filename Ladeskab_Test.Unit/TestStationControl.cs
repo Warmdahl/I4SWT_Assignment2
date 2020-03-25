@@ -60,5 +60,14 @@ namespace Ladeskab_Test.Unit
             _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
+
+        [TestCase(false, "Indlæs RFID", StationControl.LadeskabState.Available)]
+        [TestCase(true, "Dør åben, tilslut telefon", StationControl.LadeskabState.DoorOpen)]
+        public void StationControlHandleDoorstateAvailable(bool open, string output, StationControl.LadeskabState state)
+        {
+            _door.ChangedValueEvent += Raise.EventWith<ChangedEventArgs>(new ChangedEventArgs() { DoorState = open });
+            _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
+            Assert.That(_stationControl._state, Is.EqualTo(state));
+        }
     }
 }

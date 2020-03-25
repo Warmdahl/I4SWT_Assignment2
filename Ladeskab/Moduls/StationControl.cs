@@ -72,9 +72,9 @@ namespace Ladeskab
                         _display.DisplayUserInstructions("Indlæs RFID");
                     }
                     break;
-                case LadeskabState.Locked:    //state=locked
-                    _display.DisplayChargingMessage("Charging...");
-                    break;
+                //case LadeskabState.Locked:    //state=locked
+                //    _display.DisplayChargingMessage("Charging...");
+                //    break;
                 
             }
         }
