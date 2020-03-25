@@ -13,7 +13,7 @@ namespace Ladeskab
     public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
-        private enum LadeskabState
+        public enum LadeskabState
         {
             Available,
             Locked,
@@ -26,8 +26,9 @@ namespace Ladeskab
         private IDisplay _display;
         private ILog _log;
         private IDoor _door;
-        private LadeskabState _state;
-        private int _oldId;
+        
+        public LadeskabState _state { get; private set; }
+        public int _oldId { get; private set; }
         
 
         // Her mangler constructor
