@@ -33,24 +33,28 @@ namespace Ladeskab_Test.Unit
             _stationControl = new StationControl(_door, _chargeControl, _rFidReader, _display, _logfile, _usbCharger);
         }
 
+        //Test af om ladeskab går som available fra start af.
         [Test]
         public void StationControlIsAvailable()
         {
             Assert.That(_stationControl._state, Is.EqualTo(StationControl.LadeskabState.Available));
         }
 
+        //Tester om station control kan modtage events fra door.
         [Test]
         public void StationControlWorksWithDoorEvents()
         {
             _door.Received().ChangedValueEvent += Arg.Any<EventHandler<ChangedEventArgs>>();
         }
 
+        //Tester om station control kan modtage events fra RFId
         [Test]
         public void StationControlWorksWithRFidEvents()
         {
             _rFidReader.Received().RFIDReadEvent += Arg.Any<EventHandler<RFIDReadEventArgs>>();
         }
 
+        //Tester om Station Control håndter den switch case for handledoorstate ladeskab.DoorOpen korrekt
         [TestCase(true, "Dør åben, tilslut telefon", StationControl.LadeskabState.DoorOpen)]
         [TestCase(false, "Indlæs RFID", StationControl.LadeskabState.Available)]
         public void StationControlHandleDoorstateDoorOpen(bool open, string output, StationControl.LadeskabState state)
@@ -61,6 +65,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
 
+        //Tester om Station Control håndtere den switch case for handledoorstate ladeskab.Available korrekt
         [TestCase(false, "Indlæs RFID", StationControl.LadeskabState.Available)]
         [TestCase(true, "Dør åben, tilslut telefon", StationControl.LadeskabState.DoorOpen)]
         public void StationControlHandleDoorstateAvailable(bool open, string output, StationControl.LadeskabState state)
@@ -70,6 +75,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
 
+        //Tester om Station Control håndtere den switch case for RFidDeteced ladeskab.availble og er connected korrekt
         [TestCase(50, "Ladeskab optaget", true, StationControl.LadeskabState.Locked)]
         public void StationControlRFIdAvailableConnected(int id, string output, bool islocked, StationControl.LadeskabState state)
         {
@@ -82,6 +88,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
 
+        //Tester om Station Control håndtere den switch case for RFidDeteced ladeskab.availble og ikke er connected korrekt
         [TestCase(50,"Din telefon er ikke ordentlig tilsluttet. Prøv igen.")]
         public void StationControlRFIdAvailableConnectedFail(int id, string output)
         {
@@ -90,7 +97,7 @@ namespace Ladeskab_Test.Unit
             _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
         }
 
-
+        //Tester om Station Control håndtere den switch case for RFidDeteced ladeskab.locked og er connected korrekt
         [TestCase(50, "Tag din telefon ud af skabet og luk døren", false, StationControl.LadeskabState.Available)]
         public void StationControlRFIdLocked(int id, string output, bool islocked, StationControl.LadeskabState state)
         {
@@ -106,6 +113,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_stationControl._state, Is.EqualTo(state));
         }
 
+        //Tester om Station Control håndtere den switch case for RFidDeteced ladeskab.availble og ikke er connected korrekt
         [TestCase(50,100, "Forkert RFID tag")]
         public void StationControlRfIdLockedFail(int id,int wrongid,string output)
         {
