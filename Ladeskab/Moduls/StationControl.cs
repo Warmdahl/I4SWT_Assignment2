@@ -88,10 +88,10 @@ namespace Ladeskab
             {
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
-                    if (_usbCharger.Connected)
+                    if (_chargercontrol.IsConnected())
                     {
                         _door.LockDoor();
-                        _usbCharger.StartCharge();
+                        _chargercontrol.StartCharge();
                         _oldId = e.ID;
                         _log.Log(true, _oldId);
                         _display.DisplayUserInstructions("Ladeskab optaget");
@@ -113,16 +113,16 @@ namespace Ladeskab
                     // Check for correct ID
                     if (e.ID == _oldId)
                     {
-                        _usbCharger.StopCharge();
+                        _chargercontrol.StopCharge();
                         _door.UnlockDoor();
                         _log.Log(false, _oldId);
 
-                        Console.WriteLine("Tag din telefon ud af skabet og luk døren");
+                        _display.DisplayUserInstructions("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
                     }
                     else
                     {
-                        Console.WriteLine("Forkert RFID tag");
+                        _display.DisplayUserInstructions("Forkert RFID tag");
                     }
 
                     break;
