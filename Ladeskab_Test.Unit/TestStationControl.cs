@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ladeskab_Test.Unit
 {
-    class TestStiationControl
+    class TestStationControl
     {
     }
 }
