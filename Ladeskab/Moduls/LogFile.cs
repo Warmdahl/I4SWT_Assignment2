@@ -19,10 +19,12 @@ namespace Ladeskab.Moduls
                 case true:
                     //laver streng når døren er låst
                     s = s + "locked by: " + id + ", door is locked";
+                    Console.WriteLine(s);
                     break;
                 case false:
                     //laver streng når døren er låst op
                     s = s + "unlocked by: " + id + ", door is unlocked";
+                    Console.WriteLine(s);
                     break;
             }
 
