@@ -16,6 +16,4 @@ namespace Ladeskab.Moduls
     {
         event EventHandler<RFIDReadEventArgs> RFIDReadEvent;
     }
-
-
 }
