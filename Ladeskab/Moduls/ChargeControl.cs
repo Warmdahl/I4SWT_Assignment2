@@ -43,7 +43,7 @@ namespace Ladeskab.Moduls
 
             if (current < 0)
             {
-                
+                throw new Exception("Subzero current read");
             }
             else if (current <= 5)
             {

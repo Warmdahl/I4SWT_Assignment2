@@ -24,6 +24,14 @@ namespace Ladeskab_Test.Unit
             _uut = new ChargeControl(_display, _charger);
         }
 
+        [Test]
+        public void HandleCurrentChangedUnderZeroThrowsError()
+        {
+            Assert.That(() =>
+                    _charger.CurrentValueEvent += Raise.EventWith<CurrentEventArgs>(new CurrentEventArgs() { Current = -1.0 }),
+                Throws.TypeOf<Exception>());
+        }
+
         [TestCase(0.01)]
         [TestCase(2.5)]
         [TestCase(5.0)]
