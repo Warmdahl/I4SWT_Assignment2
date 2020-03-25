@@ -69,7 +69,7 @@
     <Compile Include="TestLog.cs" />
     <Compile Include="TestDoor.cs" />
     <Compile Include="TestRFIDReader.cs" />
-    <Compile Include="TestStiationControl.cs" />
+    <Compile Include="TestStationControl.cs" />
     <Compile Include="TestUsbChargerSimulator.cs" />
   </ItemGroup>
   <ItemGroup>
