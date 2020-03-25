@@ -9,19 +9,25 @@ namespace Ladeskab_Test.Unit
 {
     public class TestLog
     {
-        private ILog _log;
+        private Ladeskab.Moduls.LogFile _log;
         
         [SetUp]
         public void SetUp()
         {
-            _log = Substitute.For<ILog>();
+            _log = new LogFile();
         }
 
         [TestCase(true, 12)]
         public void logfile(bool locked, int id)
         {
-            _log.Log(locked, id);
-            _log.Received().Log(true, 12);
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                _log.Log(locked, id);
+                string expected = string.Format($"User Instruction: {testString}{Environment.NewLine}");
+                Assert.AreEqual(expected, sw.ToString());
+            }
+            
         }
         
         
