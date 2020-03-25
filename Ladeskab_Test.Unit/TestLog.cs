@@ -40,31 +40,28 @@ namespace Ladeskab_Test.Unit
                 Assert.AreEqual(s, st);
             }
         } 
+
         [TestCase(false, 12)]
         [TestCase(false, 9)]
         [TestCase(false, 100)]
         [TestCase(false, 0)]
         [TestCase(false, -1)]
-            public void logfileFalse(bool locked, int id)
+        public void logfileFalse(bool locked, int id)
+        {
+            var now = DateTime.Now;
+            var s = now + ", ";
+            string st;
+            using (StringWriter sw = new StringWriter())
             {
-                var now = DateTime.Now;
-                var s = now + ", ";
-                string st;
-                using (StringWriter sw = new StringWriter())
-                {
 
-                    _log.Log(locked, id);
-                    s = s + "unlocked by: " + id + ", door is unlocked";
-                    
-                    st = File.ReadLines("navn.txt").Last();
-                    
+                _log.Log(locked, id);
+                s = s + "unlocked by: " + id + ", door is unlocked";
+                
+                st = File.ReadLines("navn.txt").Last();
+                
 
-                    Assert.AreEqual(s, st);
-                }
+                Assert.AreEqual(s, st);
             }
-            
-        
-        
-
+        }
     }
 }

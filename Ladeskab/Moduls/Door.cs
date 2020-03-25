@@ -9,7 +9,6 @@ namespace Ladeskab.Moduls
 {
     public class Door : IDoor
     {
-
         public bool Islocked { get; set; }
 
         public event EventHandler<ChangedEventArgs> ChangedValueEvent;
@@ -22,13 +21,11 @@ namespace Ladeskab.Moduls
         public void LockDoor()
         {
             Islocked = true;
-            //Console.WriteLine("Door is Locked");
         }
 
         public void UnlockDoor()
         {
             Islocked = false;
-            //System.Console.WriteLine("Door is Unlocked");
         }
 
         public void SimulateDoorOpen()

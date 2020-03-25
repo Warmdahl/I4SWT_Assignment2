@@ -22,7 +22,7 @@ namespace Ladeskab
             Door _door = new Door();
             StationControl _stationControl = new StationControl(_door, _chargeControl,_rFreader,_display,_logFile,_usbChargerSimulator);
 
-            // Simulering
+            // Test af program på console window
             _door.SimulateDoorOpen();
             _usbChargerSimulator.SimulateConnected(true);
             _door.SimulateDoorClose();
@@ -36,43 +36,6 @@ namespace Ladeskab
             Thread.Sleep(2000);
             _usbChargerSimulator.SimulateConnected(false);
             _door.SimulateDoorClose();
-
-
-            //bool finish = false;
-            //do
-            //{
-            //    string input;
-            //    System.Console.WriteLine("Indtast E, O, C, R: ");
-            //    input = Console.ReadLine();
-            //    if (string.IsNullOrEmpty(input)) continue;
-
-            //    switch (input[0])
-            //    {
-            //        case 'E':
-            //            finish = true;
-            //            break;
-
-            //        case 'O':
-            //            door.OnDoorOpen();
-            //            break;
-
-            //        case 'C':
-            //            door.OnDoorClose();
-            //            break;
-
-            //        case 'R':
-            //            System.Console.WriteLine("Indtast RFID id: ");
-            //            string idString = System.Console.ReadLine();
-
-            //            int id = Convert.ToInt32(idString);
-            //            rfidReader.OnRfidRead(id);
-            //            break;
-
-            //        default:
-            //            break;
-            //    }
-
-            //} while (!finish);
         }
     }
 }

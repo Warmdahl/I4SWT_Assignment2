@@ -13,7 +13,6 @@ namespace Ladeskab_Test.Unit
     [TestFixture]
     public class TestUsbChargerSimulator
     {
-
         private UsbChargerSimulator _uut;
         [SetUp]
         public void Setup()
@@ -233,8 +232,5 @@ namespace Ladeskab_Test.Unit
             // No new value received
             Assert.That(lastValue, Is.EqualTo(1000.0));
         }
-
-
-
     }
 }

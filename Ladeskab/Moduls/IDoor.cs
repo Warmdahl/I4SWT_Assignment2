@@ -9,17 +9,12 @@ namespace Ladeskab.Moduls
     }
     public interface IDoor
     {
-
         event EventHandler<ChangedEventArgs> ChangedValueEvent;
 
-        //Tells if door is locked or unlocked
-        //char getState();
-        
         //locks the door
         void LockDoor();
         
         //unlock the door
         void UnlockDoor();
-
     }
 }
