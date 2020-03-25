@@ -19,6 +19,10 @@ namespace Ladeskab_Test.Unit
         }
 
         [TestCase(true, 12)]
+        [TestCase(true, 9)]
+        [TestCase(true, 100)]
+        [TestCase(true, 0)]
+        [TestCase(true, -1)]
         public void logfileTrue(bool locked, int id)
         {
             var now = DateTime.Now;
@@ -36,7 +40,11 @@ namespace Ladeskab_Test.Unit
                 Assert.AreEqual(s, st);
             }
         } 
-        [TestCase(false, 10)]
+        [TestCase(false, 12)]
+        [TestCase(false, 9)]
+        [TestCase(false, 100)]
+        [TestCase(false, 0)]
+        [TestCase(false, -1)]
             public void logfileFalse(bool locked, int id)
             {
                 var now = DateTime.Now;
