@@ -34,9 +34,31 @@ namespace Ladeskab_Test.Unit
         }
 
         [Test]
-        public void LadeskabIsAvailable()
+        public void StationControlIsAvailable()
         {
             Assert.That(_stationControl._state, Is.EqualTo(StationControl.LadeskabState.Available));
+        }
+
+        [Test]
+        public void StationControlWorksWithDoorEvents()
+        {
+            _door.Received().ChangedValueEvent += Arg.Any<EventHandler<ChangedEventArgs>>();
+        }
+
+        [Test]
+        public void StationControlWorksWithRFidEvents()
+        {
+            _rFidReader.Received().RFIDReadEvent += Arg.Any<EventHandler<RFIDReadEventArgs>>();
+        }
+
+        [TestCase(true, "Dør åben, tilslut telefon", StationControl.LadeskabState.DoorOpen)]
+        [TestCase(false, "Indlæs RFID", StationControl.LadeskabState.Available)]
+        public void StationControlHandleDoorstateDoorOpen(bool open, string output, StationControl.LadeskabState state)
+        {
+            _door.ChangedValueEvent += Raise.EventWith<ChangedEventArgs>(new ChangedEventArgs() {DoorState = true});
+            _door.ChangedValueEvent += Raise.EventWith<ChangedEventArgs>(new ChangedEventArgs() {DoorState = open});
+            _display.Received().DisplayUserInstructions(Arg.Is<string>(output));
+            Assert.That(_stationControl._state, Is.EqualTo(state));
         }
     }
 }
