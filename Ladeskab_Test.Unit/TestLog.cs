@@ -18,6 +18,8 @@ namespace Ladeskab_Test.Unit
             _log = new LogFile();
         }
 
+        
+        //Tester loggen når døren er låses.
         [TestCase(true, 12)]
         [TestCase(true, 9)]
         [TestCase(true, 100)]
@@ -40,7 +42,8 @@ namespace Ladeskab_Test.Unit
                 Assert.AreEqual(s, st);
             }
         } 
-
+        
+        //Tester loggen når døren låses op.
         [TestCase(false, 12)]
         [TestCase(false, 9)]
         [TestCase(false, 100)]

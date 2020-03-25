@@ -24,6 +24,7 @@ namespace Ladeskab_Test.Unit
             _uut = new ChargeControl(_display, _charger);
         }
 
+        //Tester at charger kaster fejl når strømmen er under 0.
         [Test]
         public void HandleCurrentChangedUnderZeroThrowsError()
         {
@@ -32,6 +33,7 @@ namespace Ladeskab_Test.Unit
                 Throws.TypeOf<Exception>());
         }
 
+        //Tester at display får "Finished Charging!" når strøm er mellem 0 og 5.
         [TestCase(0.01)]
         [TestCase(2.5)]
         [TestCase(5.0)]
@@ -41,6 +43,8 @@ namespace Ladeskab_Test.Unit
             _display.Received().DisplayChargingMessage(Arg.Is<string>("Finished Charging!"));
         }
 
+        
+        //Tester at display får beskeden "Charging!" når strømmen er mellem 5 og 500.
         [TestCase(5.01)]
         [TestCase(125)]
         [TestCase(375)]
@@ -51,6 +55,8 @@ namespace Ladeskab_Test.Unit
             _display.Received().DisplayChargingMessage(Arg.Is<string>("Charging!"));
         }
 
+        
+        //Tester at display får beskeden "An error has occured, charging has been stopped" når strømmen er over 500
         [TestCase(500.01)]
         [TestCase(945)]
         [TestCase(1500)]
@@ -61,6 +67,8 @@ namespace Ladeskab_Test.Unit
             _charger.Received().StopCharge();
         }
 
+        
+        //Tester at chargecontrol ved at chargeren er tislsuttet og frakoblet.
         [TestCase(true)]
         [TestCase(false)]
         public void isconnected(bool con)
@@ -69,6 +77,7 @@ namespace Ladeskab_Test.Unit
             Assert.That(_uut.IsConnected, Is.EqualTo(con));
         }
 
+        //Tester om laderen beynder at lade.
         [Test]
         public void ChargeStart()
         {
@@ -76,6 +85,7 @@ namespace Ladeskab_Test.Unit
             _charger.Received().StartCharge();
         }
 
+        //Tester om laderen stopper med at lade.
         [Test]
         public void ChargeStop()
         {
